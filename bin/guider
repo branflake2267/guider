@@ -21,11 +21,12 @@ options = {
   :title => "Guides",
   :footer => format_footer("Generated on {DATE} by {GUIDER} {VERSION}."),
   :link_url => "http://localhost/extjs/",
-  :tpl_dir => File.dirname(File.dirname(__FILE__)) + "/template",
+  :tpl_dir => File.dirname(File.dirname(  )) + "/template",
   :warnings => false,
   :social => [],
   :search => nil,
   :analytics => nil,
+  :styles => nil,
 }
 
 input_files = OptionParser.new do |opts|
@@ -87,6 +88,10 @@ input_files = OptionParser.new do |opts|
     puts "Guider #{GUIDER_VERSION}"
     exit
   end
+  
+  opts.on("--styles=styles.css", "Provide a customized stylesheet.") do |styles|
+     options[:styles] = styles
+   end
 end.parse!
 
 if input_files.length == 1

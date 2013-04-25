@@ -1,6 +1,7 @@
 require "kramdown"
 require "pathname"
 require "guider/logger"
+require 'github/markup'
 
 module Guider
   class Guide
@@ -12,6 +13,7 @@ module Guider
       @markdown = IO.read(filename)
       @rel_path = relative_path(options[:input], filename)
       @html = Kramdown::Document.new(@markdown).to_html
+      # GitHub::Markup.render(file, File.read(file))
     end
 
     def write(filename)
